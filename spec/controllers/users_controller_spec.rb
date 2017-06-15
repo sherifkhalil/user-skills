@@ -1,18 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
+    let(:user) { create(:user) }
 
-    describe 'GET #index' do
+    context 'GET #index' do
         
         before { get :index }
 
         it { should respond_with(:ok) }
     end
 
-    describe 'GET #show' do
+    context 'GET #show' do
         
-        before { get :show, id: create(:user).id }
-
+        before { get :show, params: { id: user.id } }
+        
         it { should respond_with(:ok) }
     end
 
